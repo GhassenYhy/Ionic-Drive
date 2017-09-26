@@ -1,0 +1,119 @@
+<div class="wrapper">
+    <div class="sidebar" data-active-color="rose" data-background-color="black"
+         data-image="./assets/img/sidebar-1.jpg" material-load1>
+        <!--
+    Tip 1: You can change the color of active element of the sidebar using: data-active-color="purple | blue | green | orange | red | rose"
+    Tip 2: you can also add an image using data-image tag
+    Tip 3: you can change the color of the sidebar with data-background-color="white | black"
+-->
+        <div class="logo">
+            <a ui-sref="home" class="simple-text">
+                Safe Drive
+            </a>
+        </div>
+        <div class="logo logo-mini">
+            <a  class="simple-text">
+                SD
+            </a>
+        </div>
+        <div class="sidebar-wrapper">
+            <div class="user">
+                <div class="photo">
+                    <img ng-src="./assets/img/uploads/{{ user.image }}" err-src="./assets/img/faces/avatar.jpg"/>
+                </div>
+                <div class="info">
+                    <a data-toggle="collapse" href="#collapseExample" class="collapsed">
+                        {{user.first_name}} {{user.last_name}}
+                        <b class="caret"></b>
+                    </a>
+                    <div class="collapse" id="collapseExample">
+                        <ul class="nav">
+                            <li ui-sref-active="active">
+                                <a ui-sref="profile">My Profile</a>
+                            </li>
+                            <li ui-sref-active="active">
+                                <a ui-sref="editProfile">Edit Profile</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <ul class="nav">
+                <li ui-sref-active="active">
+                    <a ui-sref="home">
+                        <i class="material-icons">dashboard</i>
+                        <p>Home</p>
+                    </a>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="reservations">
+                        <i class="material-icons">toc</i>
+                        <p>My Reservations</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="main-panel">
+        <nav class="navbar navbar-transparent navbar-absolute" >
+            <div class="container-fluid">
+                <div class="navbar-minimize">
+                    <button id="minimizeSidebar" class="btn btn-round btn-white btn-fill btn-just-icon">
+                        <i class="material-icons visible-on-sidebar-regular">more_vert</i>
+                        <i class="material-icons visible-on-sidebar-mini">view_list</i>
+                    </button>
+                </div>
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"> {{current}} </a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right" ng-controller="HeaderController">
+                        <li>
+                            <a id="cart" ui-sref="cart">
+                                <i class="material-icons">shopping_cart</i>
+                                <span class="notification">{{cart.length}}</span>
+                                <p class="hidden-lg hidden-md">
+                                    Panier
+                                    <b class="caret"></b>
+                                </p>
+                            </a>
+                        </li>
+                        <li class="dropdown" style="cursor:pointer" >
+                            <a class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="material-icons">input</i>
+                                <p class="hidden-lg hidden-md">
+                                    Log out
+                                    <b class="caret"></b>
+                                </p>
+                            </a>
+                            <ul class="dropdown-menu" >
+                                <li>
+                                    <a ui-sref="logOut">Log out</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+        <div class="content" ui-view></div>
+        <footer class="footer">
+            <div class="container-fluid">
+                <p class="copyright pull-right">
+                    &copy;
+                    <script>
+                        document.write(new Date().getFullYear())
+                    </script>
+                    By HolyNova
+                </p>
+            </div>
+        </footer>
+    </div>
+</div>
